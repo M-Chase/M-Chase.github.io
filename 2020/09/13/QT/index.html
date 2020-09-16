@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QT | M-Chase</title><meta name="description" content="目录1 概述1.1 课程设计目的与要求 1.2课程设计内容 1.3课程设计总体思想 2系统需求分析2.1 系统总体设计 2.2主体功能及流程图 3系统概要分析3.1系统特色与不足 3.2系统调试遇到的问题及解决办法 3.3设计心得总结 3.4参考资料 1概述1.1 课程设计目的与要求1.1.1目的《面向对象程序设计》是一门实践性很强的计算机专业基础课程，课程设计是学习完该课程后进行的一次较全面的综"><meta name="author" content="M-Chase"><meta name="copyright" content="M-Chase"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/09/13/QT/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="QT"><meta property="og:url" content="http://example.com/2020/09/13/QT/"><meta property="og:site_name" content="M-Chase"><meta property="og:description" content="目录1 概述1.1 课程设计目的与要求 1.2课程设计内容 1.3课程设计总体思想 2系统需求分析2.1 系统总体设计 2.2主体功能及流程图 3系统概要分析3.1系统特色与不足 3.2系统调试遇到的问题及解决办法 3.3设计心得总结 3.4参考资料 1概述1.1 课程设计目的与要求1.1.1目的《面向对象程序设计》是一门实践性很强的计算机专业基础课程，课程设计是学习完该课程后进行的一次较全面的综"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2020-09-13T09:26:29.000Z"><meta property="article:modified_time" content="2020-09-15T11:41:03.180Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.1.1',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-09-15 19:41:03'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.1.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">3</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">1 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.0.2.</span> <span class="toc-text">2系统需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90"><span class="toc-number">1.0.3.</span> <span class="toc-text">3系统概要分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">1概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9B%AE%E7%9A%84%E4%B8%8E%E8%A6%81%E6%B1%82"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">1.1 课程设计目的与要求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1%E7%9B%AE%E7%9A%84"><span class="toc-number">2.0.0.1.1.</span> <span class="toc-text">1.1.1目的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2%E8%A6%81%E6%B1%82"><span class="toc-number">2.0.0.1.2.</span> <span class="toc-text">1.1.2要求</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E5%86%85%E5%AE%B9"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">1.2课程设计内容</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.0.0.2.1.</span> <span class="toc-text">1.2.1设计要求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-number">2.0.0.2.2.</span> <span class="toc-text">1.2.2 题目：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4%E5%85%B6%E4%BB%96%E8%A6%81%E6%B1%82%E5%8F%8A%E8%AF%B4%E6%98%8E"><span class="toc-number">2.0.0.2.3.</span> <span class="toc-text">1.2.4其他要求及说明</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%80%BB%E4%BD%93%E6%80%9D%E6%83%B3"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">1.3课程设计总体思想</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Qt%E7%9A%84%E5%87%A0%E7%82%B9%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">2.0.0.3.1.</span> <span class="toc-text">Qt的几点优势：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#MySQL%E7%9A%84%E5%87%A0%E7%82%B9%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">2.0.0.3.2.</span> <span class="toc-text">MySQL的几点优势：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-1"><span class="toc-number">3.</span> <span class="toc-text">2系统需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">2.1 系统总体设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE1-%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">3.0.0.1.1.</span> <span class="toc-text">图1  总体架构</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E4%B8%BB%E4%BD%93%E5%8A%9F%E8%83%BD%E5%8F%8A%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">2.2主体功能及流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1%E7%99%BB%E9%99%86%E6%B3%A8%E5%86%8C%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.0.0.2.1.</span> <span class="toc-text">2.2.1登陆注册界面设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE2-%E7%99%BB%E9%99%86%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-number">3.0.0.2.2.</span> <span class="toc-text">图2  登陆效果图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE3-%E6%B3%A8%E5%86%8C%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-number">3.0.0.2.3.</span> <span class="toc-text">图3  注册效果图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE4-%E7%99%BB%E9%99%86%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.0.0.2.4.</span> <span class="toc-text">图4  登陆注册流程图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%EF%BC%9A"><span class="toc-number">3.0.0.2.5.</span> <span class="toc-text">登录：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%EF%BC%9A"><span class="toc-number">3.0.0.2.6.</span> <span class="toc-text">注册：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2%E9%A1%BE%E5%AE%A2%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.0.0.2.7.</span> <span class="toc-text">2.2.2顾客界面设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE5-%E9%A1%BE%E5%AE%A2%E7%95%8C%E9%9D%A2"><span class="toc-number">3.0.0.2.8.</span> <span class="toc-text">图5 顾客界面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE6-%E9%A1%BE%E5%AE%A2%E7%95%8C%E9%9D%A2%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.0.0.2.9.</span> <span class="toc-text">图6 顾客界面流程图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A2%E9%A4%90"><span class="toc-number">3.0.0.2.10.</span> <span class="toc-text">订餐</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%B6%88%E8%B4%B9%E4%BF%A1%E6%81%AF"><span class="toc-number">3.0.0.2.11.</span> <span class="toc-text">统计消费信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-3%E9%AA%91%E6%89%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.0.0.2.12.</span> <span class="toc-text">2.2.3骑手界面设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE7-%E9%AA%91%E6%89%8B%E7%95%8C%E9%9D%A2"><span class="toc-number">3.0.0.2.13.</span> <span class="toc-text">图7 骑手界面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE8-%E9%AA%91%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.0.0.2.14.</span> <span class="toc-text">图8 骑手流程图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9"><span class="toc-number">3.0.0.2.15.</span> <span class="toc-text">信息修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E8%AE%A2%E5%8D%95%E4%BF%A1%E6%81%AF"><span class="toc-number">3.0.0.2.16.</span> <span class="toc-text">统计订单信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-4%E5%95%86%E5%AE%B6%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.0.0.2.17.</span> <span class="toc-text">2.2.4商家界面设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE9-%E5%BA%97%E9%93%BA%E7%95%8C%E9%9D%A2"><span class="toc-number">3.0.0.2.18.</span> <span class="toc-text">图9 店铺界面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE10-%E5%BA%97%E9%93%BA%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.0.0.2.19.</span> <span class="toc-text">图10 店铺流程图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9-1"><span class="toc-number">3.0.0.2.20.</span> <span class="toc-text">信息修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E8%AE%A2%E5%8D%95%E4%BF%A1%E6%81%AF-1"><span class="toc-number">3.0.0.2.21.</span> <span class="toc-text">统计订单信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-5%E7%AE%A1%E7%90%86%E5%91%98%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.0.0.2.22.</span> <span class="toc-text">2.2.5管理员界面设计</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90-1"><span class="toc-number">4.</span> <span class="toc-text">3系统概要分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E7%B3%BB%E7%BB%9F%E7%89%B9%E8%89%B2%E4%B8%8E%E4%B8%8D%E8%B6%B3"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">3.1系统特色与不足</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1%E7%B3%BB%E7%BB%9F%E7%89%B9%E8%89%B2"><span class="toc-number">4.0.0.1.1.</span> <span class="toc-text">3.1.1系统特色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%9A%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E5%88%9B%E6%96%B0%E3%80%82"><span class="toc-number">4.0.0.1.2.</span> <span class="toc-text">1：编程方式创新。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%9A%E5%8A%9F%E8%83%BD%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E4%B8%A5%E5%AF%86"><span class="toc-number">4.0.0.1.3.</span> <span class="toc-text">2：功能及数据封装严密</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%EF%BC%9A%E7%95%8C%E9%9D%A2%E6%95%B4%E6%B4%81%EF%BC%8C%E5%8F%AF%E6%93%8D%E4%BD%9C%E6%80%A7%E5%BC%BA"><span class="toc-number">4.0.0.1.4.</span> <span class="toc-text">3：界面整洁，可操作性强</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2%E7%B3%BB%E7%BB%9F%E4%B8%8D%E8%B6%B3"><span class="toc-number">4.0.0.1.5.</span> <span class="toc-text">3.1.2系统不足</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">4.0.0.2.</span> <span class="toc-text">3.2系统调试遇到的问题及解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">4.0.0.2.1.</span> <span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%EF%BC%9A"><span class="toc-number">4.0.0.2.2.</span> <span class="toc-text">解决办法：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3%E8%AE%BE%E8%AE%A1%E5%BF%83%E5%BE%97%E6%80%BB%E7%BB%93"><span class="toc-number">4.0.0.3.</span> <span class="toc-text">3.3设计心得总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">4.0.0.4.</span> <span class="toc-text">3.4参考资料</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">M-Chase</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">QT</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-13T09:26:29.000Z" title="发表于 2020-09-13 17:26:29">2020-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-15T11:41:03.180Z" title="更新于 2020-09-15 19:41:03">2020-09-15</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h3><p>1.1 课程设计目的与要求</p>
+<p>1.2课程设计内容</p>
+<p>1.3课程设计总体思想</p>
+<h3 id="2系统需求分析"><a href="#2系统需求分析" class="headerlink" title="2系统需求分析"></a>2系统需求分析</h3><p>2.1 系统总体设计</p>
+<p>2.2主体功能及流程图</p>
+<h3 id="3系统概要分析"><a href="#3系统概要分析" class="headerlink" title="3系统概要分析"></a>3系统概要分析</h3><p>3.1系统特色与不足</p>
+<p>3.2系统调试遇到的问题及解决办法</p>
+<p>3.3设计心得总结</p>
+<p>3.4参考资料</p>
+<h1 id="1概述"><a href="#1概述" class="headerlink" title="1概述"></a>1概述</h1><h4 id="1-1-课程设计目的与要求"><a href="#1-1-课程设计目的与要求" class="headerlink" title="1.1 课程设计目的与要求"></a>1.1 课程设计目的与要求</h4><h5 id="1-1-1目的"><a href="#1-1-1目的" class="headerlink" title="1.1.1目的"></a>1.1.1目的</h5><p>《面向对象程序设计》是一门实践性很强的计算机专业基础课程，课程设计是学习完该课程后进行的一次较全面的综合练习。其目的在于通过实践加深学生对面向对象程序设计的理论、方法和基础知识的理解，掌握使用C++语言进行面向对象设计的基本方法，提高运用面向对象方法分析实际问题、解决实际问题的能力。</p>
+<p>1、巩固并加深学生对与C++语言程序设计的理解。</p>
+<p>2、培养学生的面向对象编程的编程思想，充分理解面向过程与面向对象两种设计方法的区别。</p>
+<p>3、提高学生的编程能力，自我学习能力。</p>
+<p>4、增加学生写程序设计开发文档的能力。</p>
+<p>5、鼓励学生进行创新设计，训练学生创新思维。</p>
+<h5 id="1-1-2要求"><a href="#1-1-2要求" class="headerlink" title="1.1.2要求"></a>1.1.2要求</h5><p>本设计采用教师指导、学生自学和独立编程操作方式，先由学生查阅与本设计有关的书籍和资料，在两周时间内，完成课程设计内容中的一个管理系统，具体要求如下：</p>
+<ol>
+<li><p>独立思考：独立完成课程设计中各任务的设计和调试。</p>
+</li>
+<li><p>数据管理：管理系统中的数据可用数据库的形式保存，也可用普通文件（文本文件或二进制文件）的形式保存。</p>
+</li>
+<li><p>面向对象编程要求：要求使用类和对象进行程序设计，并能够合理设计类（包括对不同类的设计以及同一类的成员的设计），要求在程序中体现出函数重载、运算符重载、类的继承与派生等语法。</p>
+</li>
+<li><p>尽量避免使用全局变量</p>
+</li>
+<li><p>用户管理功能：所设计的系统要求能用于多个用户，每个用户管理自己的数据和登录密码。</p>
+</li>
+</ol>
+<p>程序要求：界面美观、可操作性强、稳定性好。</p>
+<h4 id="1-2课程设计内容"><a href="#1-2课程设计内容" class="headerlink" title="1.2课程设计内容"></a>1.2课程设计内容</h4><h5 id="1-2-1设计要求"><a href="#1-2-1设计要求" class="headerlink" title="1.2.1设计要求"></a>1.2.1设计要求</h5><ol>
+<li><p>独立思考：独立完成课程设计中各任务的设计和调试。</p>
+</li>
+<li><p>数据管理：管理系统中的数据可用数据库的形式保存，也可用普通文件（文本文件或二进制文件）的形式保存。</p>
+</li>
+<li><p>面向对象编程要求：要求使用类和对象进行程序设计，并能够合理设计类（包括对不同类的设计以及同一类的成员的设计），要求在程序中体现出函数重载、运算符重载、类的继承与派生等语法。</p>
+</li>
+<li><p>尽量避免使用全局变量</p>
+</li>
+<li><p>用户管理功能：所设计的系统要求能用于多个用户，每个用户管理自己的数据和登录密码。</p>
+</li>
+<li><p>程序要求：界面美观、可操作性强、稳定性好。</p>
+</li>
+</ol>
+<h5 id="1-2-2-题目："><a href="#1-2-2-题目：" class="headerlink" title="1.2.2 题目："></a>1.2.2 题目：</h5><p>[1] 编写一个外卖点餐系统，实现对客户、店铺、订单及配送人员等信息的管理。</p>
+<p>[2] 客户信息包括：客户姓名、联系方式、地址等；店铺信息包括：其菜品和价格，评分等；配送人员信息包括：姓名，联系方式、评分等；订单信息包括：编号、客户、菜品及价格、价格合计、配送人员等信息。</p>
+<p><strong>1.2.3</strong> <strong>基本管理功能</strong>：</p>
+<p>[1] 客户、店铺、外卖人员管理：对店铺和客户信息进行管理。包括：</p>
+<p>添加：添加客户、店铺、配送人员信息。</p>
+<p>显示：查询店铺信息。</p>
+<p>删除：删除相应信息。</p>
+<p>[2] 点餐：模拟实际点餐过程，客户选择店铺，然后选择菜品，提交则安排配送人员，生成订单</p>
+<p>[3] 订单管理：</p>
+<p>添加：新订单添加；</p>
+<p>删除：取消一个订单；</p>
+<p>显示：显示所有订单。</p>
+<p>查询：查询某一个订单</p>
+<p>[4] 统计功能：根据需要设计合理的统计功能，比如：每天店铺的营业额、每个客户的月消费额等。</p>
+<p>[5] 退出功能：要求点击退出，可以退出系统。</p>
+<h5 id="1-2-4其他要求及说明"><a href="#1-2-4其他要求及说明" class="headerlink" title="1.2.4其他要求及说明"></a>1.2.4其他要求及说明</h5><p>[1] 需要定义的类、类的成员变量、成员函数不限于以上的要求，自己进行需求分析，进行合理的设计。 店铺和客户信息数量不少于30条，其他根据需要添加。</p>
+<p>[2] 鼓励大家模拟实际订餐系统，设计更多的系统功能。</p>
+<h4 id="1-3课程设计总体思想"><a href="#1-3课程设计总体思想" class="headerlink" title="1.3课程设计总体思想"></a>1.3课程设计总体思想</h4><p>本应用程序使用C++的主流窗体应用框架Qt进行界面设计，MySQL数据库进行后端数据存储处理。</p>
+<h5 id="Qt的几点优势："><a href="#Qt的几点优势：" class="headerlink" title="Qt的几点优势："></a>Qt的几点优势：</h5><p><strong>1</strong>：Qt是基于C++的一种语言拓展。Qt的类都是用C++来写的，很多类功能非常强大，调用起来方便易懂，并且帮助文档也非常容易理解，并且继承了C++的快速，简易，面向对象等诸多优点。</p>
+<p><strong>2</strong>：Qt具有非常好的移植性。Qt是一种跨平台的窗体应用框架。用Qt写出来的程序不只是可以在Windows上运行，在Linux，Mac等平台上也可以流畅运行，不会出现版本不支持现象。</p>
+<p><strong>3</strong>：Qt使用起来简洁高效。Qt统一的跨平台API 让程序员们集中精力致力于可增值的技术革新，而无须担心维护和管理现有应用程序多版本的基础结构与界面。 因此Qt开发人员仅需要学会一种API来写入应用程序，该程序便可在任何地方运行。Qt Software投入了相当大的努力使得Qt使用起来尽可能简单和直观。来自世界各地的客户反馈普遍认为Qt编程简单而有趣；而对于商务应用而言，Qt可以转换为更多的功能，并且在保持质量性能的情况下，只需更少的维护工作。</p>
+<h5 id="MySQL的几点优势："><a href="#MySQL的几点优势：" class="headerlink" title="MySQL的几点优势："></a>MySQL的几点优势：</h5><p><strong>1</strong>：运行速度快，MySQL体积小，命令执行的速度快。<br><strong>2</strong>：使用成本低。MySQL是开源的，且提供免费版本，对大多数用户来说大大降低了使用成本。<br><strong>3</strong>：使用容易。与其他大型数据库的设置和管理相比，其复杂程度较低，易于使用。<br><strong>4</strong>：可移植性强。MySQL能够运行与多种系统平台上，如windouws，Linux，Unix等。<br><strong>5</strong>：适用更多用户。MySQL支持最常用的数据管理功能，适用于中小型企业甚至大型网站应用。</p>
+<h1 id="2系统需求分析-1"><a href="#2系统需求分析-1" class="headerlink" title="2系统需求分析"></a>2系统需求分析</h1><h4 id="2-1-系统总体设计"><a href="#2-1-系统总体设计" class="headerlink" title="2.1 系统总体设计"></a>2.1 系统总体设计</h4><p><img src="/2020/09/13/QT/think.png" alt="think"></p>
+<h5 id="图1-总体架构"><a href="#图1-总体架构" class="headerlink" title="图1  总体架构"></a>图1  总体架构</h5><p>程序思想如图1所示，由登陆注册开始程序，注册可注册商家，骑手，顾客三种身份，登录增加了一个管理员身份，来管理所有的数据信息，每个人可以根据自己的账号与密码登录然后执行相应具体功能。</p>
+<h4 id="2-2主体功能及流程图"><a href="#2-2主体功能及流程图" class="headerlink" title="2.2主体功能及流程图"></a>2.2主体功能及流程图</h4><h5 id="2-2-1登陆注册界面设计"><a href="#2-2-1登陆注册界面设计" class="headerlink" title="2.2.1登陆注册界面设计"></a>2.2.1登陆注册界面设计</h5><p><img src="/2020/09/13/QT/%E7%99%BB%E5%BD%95.png" alt="登录"></p>
+<h5 id="图2-登陆效果图"><a href="#图2-登陆效果图" class="headerlink" title="图2  登陆效果图"></a>图2  登陆效果图</h5><p><img src="/2020/09/13/QT/%E6%B3%A8%E5%86%8C.png" alt="注册"></p>
+<h5 id="图3-注册效果图"><a href="#图3-注册效果图" class="headerlink" title="图3  注册效果图"></a>图3  注册效果图</h5><p><img src="/2020/09/13/QT/%E7%99%BB%E9%99%86%E6%B3%A8%E5%86%8C.png" alt="登陆注册"></p>
+<h5 id="图4-登陆注册流程图"><a href="#图4-登陆注册流程图" class="headerlink" title="图4  登陆注册流程图"></a>图4  登陆注册流程图</h5><h5 id="登录："><a href="#登录：" class="headerlink" title="登录："></a>登录：</h5><p>​    登录需要输入三个内容，账号，密码，身份。当点击登录按钮的时候，触发鼠标点击事件QPushuButton::click()，此时通过信号与槽的关系，用一个函数来进行对这个鼠标点击事件的相应。</p>
+<p>​    进入testLogin函数后，连接数据库，通过对身份信息的比对：骑手，商家，顾客，管理员四种身份，查询数据库中相应的表单进行逐一比对，如果账号和密码与数据库中的匹配，此时登录成功，出现弹窗提示，跳转到相应界面。</p>
+<h5 id="注册："><a href="#注册：" class="headerlink" title="注册："></a>注册：</h5><p>​    每个身份需要注册的信息都不同，但做多个注册界面又显得繁琐冗杂没有必要，于是就简化成一个注册界面。</p>
+<p>​    当确认按钮被点击后，触发QPushuButton::click()事件，通过后端函数进行处理，根据身份的不同，向数据库相应的表单插入相应的信息。如果插入成功则出现弹窗提示注册成功自动返回到登录界面，插入失败则出现弹窗提示注册失败。</p>
+<h5 id="2-2-2顾客界面设计"><a href="#2-2-2顾客界面设计" class="headerlink" title="2.2.2顾客界面设计"></a>2.2.2顾客界面设计</h5><img src="/2020/09/13/QT/顾客界面.png" alt="顾客界面" style="zoom:80%;">
+
+<h5 id="图5-顾客界面"><a href="#图5-顾客界面" class="headerlink" title="图5 顾客界面"></a>图5 顾客界面</h5><img src="/2020/09/13/QT/顾客界面流程图.png" alt="顾客界面流程图" style="zoom:80%;">
+
+<h5 id="图6-顾客界面流程图"><a href="#图6-顾客界面流程图" class="headerlink" title="图6 顾客界面流程图"></a>图6 顾客界面流程图</h5><p>顾客这里主要有两个主要功能，订餐，统计消费信息。</p>
+<h5 id="订餐"><a href="#订餐" class="headerlink" title="订餐"></a>订餐</h5><p>​    这里主要运用了几个输入框，用户根据信息面板上的店铺信息及评分进行点餐，依次输入店名，菜品以及住址三个信息。保证信息无误之后点击订餐按钮，此时调用函数进行处理。</p>
+<p>​    这里先会对输入的信息进行判断，是否未完成输入或者输入有问题，然后根据输入的菜品名称再去和数据库中对应店铺的菜单进行比对，将对应菜品的价格相加，再加上配送费5元，算出总价格。此时再去数据库中查询骑手的忙碌状态，若有骑手处于空闲状态，则进行订单分配，订餐成功，店铺增加相应的收入，顾客增加相应的花销。</p>
+<h5 id="统计消费信息"><a href="#统计消费信息" class="headerlink" title="统计消费信息"></a>统计消费信息</h5><p>​    点击统计按钮后，执行函数，根据登录的账号密码去数据库的顾客表单中查询到相应的数据，在此调用此顾客消费总额，进行数据处理，然后通过ui对前端显示面板进行数据绑定。</p>
+<h5 id="2-2-3骑手界面设计"><a href="#2-2-3骑手界面设计" class="headerlink" title="2.2.3骑手界面设计"></a>2.2.3骑手界面设计</h5><p><img src="/2020/09/13/QT/%E9%AA%91%E6%89%8B%E7%95%8C%E9%9D%A2.png" alt="骑手界面"></p>
+<h5 id="图7-骑手界面"><a href="#图7-骑手界面" class="headerlink" title="图7 骑手界面"></a>图7 骑手界面</h5><p><img src="/2020/09/13/QT/%E9%AA%91%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="骑手流程图"></p>
+<h5 id="图8-骑手流程图"><a href="#图8-骑手流程图" class="headerlink" title="图8 骑手流程图"></a>图8 骑手流程图</h5><p>骑手主要有两个功能，修改信息和统计订单信息</p>
+<h5 id="信息修改"><a href="#信息修改" class="headerlink" title="信息修改"></a>信息修改</h5><p>当点击修改按钮的时候，执行函数，把输入框中输入的名字，电话，密码与数据库中原有的数据进行替换，完成信息修改</p>
+<h5 id="统计订单信息"><a href="#统计订单信息" class="headerlink" title="统计订单信息"></a>统计订单信息</h5><p>​    点击统计按钮后，执行函数，根据登录的账号密码去数据库的骑手表单中查询到相应的订单号，按照此订单号再去订单表单中进行查询，找到订单信息，进行数据处理，然后通过ui对前端显示面板进行数据绑定。</p>
+<h5 id="2-2-4商家界面设计"><a href="#2-2-4商家界面设计" class="headerlink" title="2.2.4商家界面设计"></a>2.2.4商家界面设计</h5><p><img src="/2020/09/13/QT/%E5%95%86%E5%AE%B6%E7%95%8C%E9%9D%A2.png" alt="商家界面"></p>
+<h5 id="图9-店铺界面"><a href="#图9-店铺界面" class="headerlink" title="图9 店铺界面"></a>图9 店铺界面</h5><p><img src="/2020/09/13/QT/%E9%AA%91%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="骑手流程图"></p>
+<h5 id="图10-店铺流程图"><a href="#图10-店铺流程图" class="headerlink" title="图10 店铺流程图"></a>图10 店铺流程图</h5><p>商家主要有两个功能，修改信息和统计盈利信息</p>
+<h5 id="信息修改-1"><a href="#信息修改-1" class="headerlink" title="信息修改"></a>信息修改</h5><p>当点击修改按钮的时候，执行函数，把输入框中输入的名字，菜单，评分，密码与数据库中原有的数据进行替换，完成信息修改</p>
+<h5 id="统计订单信息-1"><a href="#统计订单信息-1" class="headerlink" title="统计订单信息"></a>统计订单信息</h5><p>​    点击统计按钮后，执行函数，根据登录的账号密码去数据库的商家表单中查询到相应的数据，在此调用此商家盈利总额，进行数据处理，然后通过ui对前端显示面板进行数据绑定。</p>
+<h5 id="2-2-5管理员界面设计"><a href="#2-2-5管理员界面设计" class="headerlink" title="2.2.5管理员界面设计"></a>2.2.5管理员界面设计</h5><p><img src="/2020/09/13/QT/%E7%AE%A1%E7%90%86%E5%91%98%E8%8F%9C%E5%8D%95.png" alt="管理员菜单"></p>
+<p><img src="/2020/09/13/QT/%E7%AE%A1%E7%90%86%E5%91%98%E7%95%8C%E9%9D%A2.png" alt="管理员界面"></p>
+<p><img src="/2020/09/13/QT/%E7%AE%A1%E7%90%86%E5%91%98%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="管理员流程图"></p>
+<p>管理员主要功能即是对每一种身份以及订单信息进行增删改查等后台操作。通过使用可视化数据库的技术，将数据库中的表单直接呈现在Qt中的一个表单容器中，然后通过对其进行设置即可进行增删改差等操作。</p>
+<h1 id="3系统概要分析-1"><a href="#3系统概要分析-1" class="headerlink" title="3系统概要分析"></a>3系统概要分析</h1><h4 id="3-1系统特色与不足"><a href="#3-1系统特色与不足" class="headerlink" title="3.1系统特色与不足"></a>3.1系统特色与不足</h4><h5 id="3-1-1系统特色"><a href="#3-1-1系统特色" class="headerlink" title="3.1.1系统特色"></a>3.1.1系统特色</h5><h5 id="1：编程方式创新。"><a href="#1：编程方式创新。" class="headerlink" title="1：编程方式创新。"></a>1：编程方式创新。</h5><p>本系统使用可视化编程Qt框架及MySQL数据库，敢于尝试窗体框架，使用Qt Creator做编译器，提高开发效率，通过在网上寻找教学视频以及自己查看官方文档进行编程。存储方式使用数据库存储，而不是使用文件，方便进行各类的增删改查。处理数据的时候多次使用字符串拼接与拆分思想，以整齐的方式呈现数据。 </p>
+<h5 id="2：功能及数据封装严密"><a href="#2：功能及数据封装严密" class="headerlink" title="2：功能及数据封装严密"></a>2：功能及数据封装严密</h5><p>系统没有用到全局变量，所有类的数据成员均为私有数据成员，数据成员及函数命名规范，函数功能书写规范，未使用友元函数，增强了对于数据和操作的封装性，使得代码可扩充性强，可方便进行二次开发。main函数简洁高效，只有几句话，不繁琐。所有类与函数全部分开定义，每个文件行数都不冗长，代码可读性强。</p>
+<h5 id="3：界面整洁，可操作性强"><a href="#3：界面整洁，可操作性强" class="headerlink" title="3：界面整洁，可操作性强"></a>3：界面整洁，可操作性强</h5><p>界面布局整齐简洁，使用水平布局，垂直布局，网格布局相结合，使得界面不那么杂乱无章。许多操作都是使用按钮等可视化组件进行显示，提示性强，方便用户进行操作。数据显示通过文本框，文本框支持富文本显示形式，可调节字体大小颜色等。</p>
+<h5 id="3-1-2系统不足"><a href="#3-1-2系统不足" class="headerlink" title="3.1.2系统不足"></a>3.1.2系统不足</h5><p>点餐界面不是很智能。</p>
+<p>管理员详情界面第一次进入会出现不展现表格信息的bug，点击确认之后才能正常展示，暂时没有解决此bug。</p>
+<p>对一些用户输入的非法字符串暂时没有做过多的匹配处理。</p>
+<h4 id="3-2系统调试遇到的问题及解决办法"><a href="#3-2系统调试遇到的问题及解决办法" class="headerlink" title="3.2系统调试遇到的问题及解决办法"></a>3.2系统调试遇到的问题及解决办法</h4><h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>1：MySQL数据库连接Qt失败</p>
+<p>2：写sql语句时无法将变量对应的值带入到sql里面进行替换。</p>
+<p>3：界面布局凌乱不齐。</p>
+<h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>1：当查出有可能是两个应用的版本位数不同而导致的这个问题之后，通过控制台来查看两个应用的版本信息，发现确实不匹配，一个是32位，另一个是64位的。最后把MySQL数据库彻底卸载之后装了一个32位的数据库完美解决问题。</p>
+<p>2：通过网上查阅发现Qt对于字符串操作有很多方法，通过了解后进行调用其中的方法，很容易便把变量插入到sql语句中了。</p>
+<p>3：通过使用水平布局，垂直布局，网格布局以及弹簧，将界面进行重新排版后解决问题。</p>
+<h4 id="3-3设计心得总结"><a href="#3-3设计心得总结" class="headerlink" title="3.3设计心得总结"></a>3.3设计心得总结</h4><p>​    最开始的时候是想用微信小程序来写这个课程设计，但是经过询问后不让用除C++以外的语言进行编写。于是后面想用Qt和MySQL来进行编写，当时很犹豫，不知道能不能在短期之内入门Qt并完成一个课程设计作业，最开始有点想要放弃使用Qt。后来在年级大群里找到有同学用Qt写的课设，与其进行交流，听说入门并不是非常难，通过几天的学习Qt教学视频之后，对Qt有了一定的认识，知道如何去开发窗体应用，便开始了我的开发过程。</p>
+<p>​    因为之前有写过Java，了解一些开发窗体应用程序的主体思想，所以看教学视频来入门还是非常快的，当了解了Qt的一些基本组件以及如何触发组件的监听事件之后，基本就可以进行开发了。因为东西是很多的，不能一个一个进行学习，这样的话进度实在是太慢，所以了解主体框架之后后面的学习就轻松很多，Qt有专门的开发者文档，写的也是非常清晰，内容也很充实，不过开发文档是用英文来写的，所以对个人的英语水平能力也有一定的考察。</p>
+<p>​    经过磕磕绊绊将近10天的时间里，终于把课设从无到有，从丑陋到美观。这个过程虽然艰辛，但总归还是学到了很多知识，正好复习了C++基础语法，就当为期末C++考试做了复习准备。还掌握了Qt框架以及C++对于数据库的基本操作。</p>
+<h4 id="3-4参考资料"><a href="#3-4参考资料" class="headerlink" title="3.4参考资料"></a>3.4参考资料</h4><p>Qt帮助文档</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XW411x7NU?from=search&amp;seid=10292686057260723702">https://www.bilibili.com/video/BV1XW411x7NU?from=search&amp;seid=10292686057260723702</a></p>
+<p>b站Qt教程</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/du-hong/p/10899327.html">https://www.cnblogs.com/du-hong/p/10899327.html</a> Mysql配置教程</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42046850/article/details/88970049">https://blog.csdn.net/weixin_42046850/article/details/88970049</a> Qt安装教程</p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/qt/">https://mirrors.tuna.tsinghua.edu.cn/qt/</a> 清华软件镜像源下载</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">M-Chase</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/09/13/QT/">http://example.com/2020/09/13/QT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">M-Chase</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/09/13/Blog/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Blog</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/13/hello-world/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By M-Chase</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
